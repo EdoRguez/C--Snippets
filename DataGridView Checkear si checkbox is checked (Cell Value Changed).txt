@@ -1,0 +1,24 @@
+// Permite saber si un checkbox en el datagrid es checkeado o no
+// Es necesario poner en el Load o antes de realizar esta funcion
+// La propiedad que no permita editar una nueva linea
+// Para quiatar la ultima linea en blanco y que no de errores
+
+
+dataGridView1.AllowUserToAddRows = false;
+
+private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+{
+    if (e.ColumnIndex == AplicaBonoVacacional.Index && e.RowIndex != -1)
+    {
+        if(bool.Parse(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[AplicaBonoVacacional.Index].Value.ToString()))
+        {
+            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[BonoVacacional.Index].Value = 1;
+            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[Pago.Index].Value = float.Parse(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[Pago.Index].Value.ToString()) + float.Parse(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[BonoVacacional.Index].Value.ToString());
+        }
+        else
+        {
+            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[Pago.Index].Value = float.Parse(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[Pago.Index].Value.ToString()) - float.Parse(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[BonoVacacional.Index].Value.ToString());
+            dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[BonoVacacional.Index].Value = 0;
+        }
+    }
+}

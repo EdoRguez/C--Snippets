@@ -1,0 +1,36 @@
+// Para consultar datos en la base de datos
+
+
+// En la clase agregar la conexion, la direccion de la conexion, el comando y la consulta
+
+string connection = System.Configuration.ConfigurationManager.ConnectionStrings["ArmandoInfoAdm.Properties.Settings.armandoinfo_dbConnectionString"].ConnectionString;
+SqlConnection sqlConexion;
+SqlCommand comando;
+string consulta;
+
+
+// Abrir la conexion
+
+sqlConexion.Open();
+
+
+consulta = "SELECT * FROM LugarAConsultarLosDatos WHERE Dato1=@Dato1 and Dato2= @Dato2"; // VALORES QUE DESEAS CONSULTAR
+comando = new SqlCommand(consulta, sqlConexion);
+comando.Parameters.AddWithValue("@Dato1", LugarDondeEstaTuDatoEnLaForma);
+comando.Parameters.AddWithValue("@Dato2", LugarDondeEstaTuDatoEnLaForma);
+
+var resultado = comando.ExecuteReader();
+
+
+while (resultado.Read()) // LLENAR LOS DATOS DE LA DB A UN DATAGRIDVIEW
+{
+    DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[0].Clone();
+    
+    row.Cells[COLUMNA1.Index].Value = resultado["COLUMNA1"].ToString();
+    row.Cells[COLUMNA2.Index].Value = resultado["COLUMNA2"].ToString();
+    row.Cells[COLUMNA3.Index].Value = resultado["COLUMNA3"].ToString();
+	
+    dataGridView1.Rows.Add(row);
+    System.Windows.Forms.Application.DoEvents();
+}
+sqlConexion.Close();

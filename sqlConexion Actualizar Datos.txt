@@ -1,0 +1,25 @@
+// Para actualizar datos en la base de datos
+
+
+// En la clase agregar la conexion, la direccion de la conexion, el comando y la consulta
+
+string connection = System.Configuration.ConfigurationManager.ConnectionStrings["ArmandoInfoAdm.Properties.Settings.armandoinfo_dbConnectionString"].ConnectionString;
+SqlConnection sqlConexion;
+SqlCommand comando;
+string consulta;
+
+
+
+// Abrir la conexion
+
+sqlConexion.Open();
+
+consulta = "UPDATE LugarDeLaDBQueQuieresActualizar SET Valor1 = @Valo1, Valor2 = @Valor2 WHERE Id = @ID";
+
+comando = new SqlCommand(consulta, sqlConexion);
+comando.Parameters.AddWithValue("@Id", ElIDdondeLoTengas);
+comando.Parameters.AddWithValue("@Valor1", Valor1EnLaForma);
+comando.Parameters.AddWithValue("@Valor2", Valor2EnLaForma);
+
+comando.ExecuteNonQuery();
+sqlConexion.Close();

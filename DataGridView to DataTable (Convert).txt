@@ -1,0 +1,51 @@
+// Permite crear un DataTable a través de un DataGrid
+
+static DataTable ConvertListToDataTable(DataGridView dgv)
+{
+    // New table.
+    DataTable table = new DataTable();
+            
+    // Add columns.
+    for (int i = 0; i < dgv.ColumnCount; i++)
+    {
+        table.Columns.Add();
+        table.Columns[i].ColumnName = dgv.Columns[i].Name;
+    }
+
+    // Add rows.
+    for (int i = 0; i < dgv.RowCount - 1; i++)
+    {
+        DataRow dr = table.NewRow();
+
+        for (int j = 0; j < dgv.ColumnCount; j++)
+        {
+            dr[j] = dgv[j, i].Value;
+        }
+        table.Rows.Add(dr);
+    }
+
+    return table;
+}
+
+
+
+
+
+// Añadir columnas y filas por separado
+
+ 	DataTable dt = new DataTable();
+
+	// Add columns.
+	dt.Columns.Add(dataGridView1.Columns[COLUMNA1.Index].Name);
+        dt.Columns.Add(dataGridView1.Columns[COLUMNA2.Index].Name);
+
+
+	// Add rows.
+	for (int i = 0; i < dataGridView1.RowCount - 1; i++){
+		DataRow dr = dt.NewRow();
+		
+		dr["COLUMNA1"] = String.Format("{0:#,##0.00}", dataGridView1[COLUMNA1.Index, i].Value);
+                dr["COLUMNA2"] = String.Format("{0:#,##0.00}", dataGridView1[COLUMNA2.Index, i].Value);
+
+		dt.Rows.Add(dr);
+	}

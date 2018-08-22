@@ -1,0 +1,23 @@
+// Selecciona todo el row cuando le das click derecho
+
+// Evento CellMouseDown
+
+private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+{
+
+    if (e.RowIndex >= 0)
+    {
+        if (e.Button == MouseButtons.Right)
+        {
+
+
+            // Add this
+            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            // Can leave these here - doesn't hurt
+            dataGridView1.Rows[e.RowIndex].Selected = true;
+            dataGridView1.Focus();
+
+        }
+    }
+
+}

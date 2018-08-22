@@ -1,0 +1,42 @@
+// Para guardar datos en la base de datos
+
+
+// En la clase agregar la conexion, la direccion de la conexion, el comando y la consulta
+
+string connection = System.Configuration.ConfigurationManager.ConnectionStrings["ArmandoInfoAdm.Properties.Settings.armandoinfo_dbConnectionString"].ConnectionString;
+SqlConnection sqlConexion;
+SqlCommand comando;
+string consulta;
+
+
+
+// Abrir la conexion
+
+sqlConexion.Open();
+
+consulta = "INSERT INTO LugarDondeSeVanAGuardar (Valor1, Valor2) VALUES(@Valor1, @Valor2)";
+comando = new SqlCommand(consulta, sqlConexion);
+
+comando.Parameters.AddWithValue("@Valor1", ElValorEnTuForma);
+comando.Parameters.AddWithValue("@Valor2", ElValorEnTuForma);
+
+            try
+            {
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Los datos han sido salvados satisfactoriamente", "Salvado Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (SqlException ex)
+            {
+
+                if (ex.Number == 2627)
+                {
+                    MessageBox.Show("Algunos datos están duplicados en la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+                }
+                else
+                {
+                    MessageBox.Show("Otro error de base de datos " + ex.ToString());
+                }
+            }
+
+sqlConexion.Close();

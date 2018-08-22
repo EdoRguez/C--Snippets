@@ -1,0 +1,23 @@
+// Para pasar una tabla como DataSource
+// Se necesita un DATATABLE para esto
+// Los nombres de las columnas de DataTable deben ser igual a los de la vista
+// La vista es la tabla creada en la base de datos y por ende los mismos nombres del Document Outline de la DataBase
+
+public partial class VisorNominaMensual : Form
+{
+    DataTable pTable;
+
+    public VisorNominaMensual(DataTable _table) // Poner la tabla como parametro del constructor y guardar su valor en una variable llamada pTable
+    {
+        InitializeComponent();
+        pTable = _table;
+    }
+
+    private void VisorNominaMensual_Load(object sender, EventArgs e)
+    {
+        NOMBREREPORTE.Database.Tables[0].SetDataSource(pTable);
+
+        pagosNomina1.SetDatabaseLogon("armandoinfo_adm", "armando2017");//  DataSourceConnections.  Ite  Item(0).SetConnection("Server location", "DB name", 1);
+        crystalReportViewer1.ReportSource = NOMBRE REPORTE;
+    }
+}

@@ -1,0 +1,31 @@
+// Recorrer el DataGridView de varias maneras
+
+
+
+// Recorrer todo el DataGridView con un foreach
+
+foreach (DataGridViewRow row in dataGridView1.Rows){
+	
+	//Recorre toda la tabla por cada linea y selecciones la columna
+	row.Cells[COLUMNA.Index].Value = Algo;
+	
+}
+
+
+
+
+
+// Selecciona una fila en especifico cuando se está en la fila actual (CurrentCell)
+
+dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[COLUMNA.Index].Value = Algun Valor;
+
+
+
+
+
+
+// Sumar toda una columna en específico 
+
+foreach(DataGridViewRow row in dataGridView1.Rows){
+	suma += Double.Parse(row.Cells[COLUMNA.Index].Value.ToString());
+}
