@@ -14,7 +14,7 @@ string consulta;
 
 sqlConexion.Open();
 
-consulta = "UPDATE LugarDeLaDBQueQuieresActualizar SET Valor1 = @Valo1, Valor2 = @Valor2 WHERE Id = @ID";
+consulta = "UPDATE LugarDeLaDBQueQuieresActualizar SET Valor1 = @Valo1, Valor2 = @Valor2 WHERE Id = @Id";
 
 comando = new SqlCommand(consulta, sqlConexion);
 comando.Parameters.AddWithValue("@Id", ElIDdondeLoTengas);

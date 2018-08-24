@@ -1,0 +1,27 @@
+// Para llenar un DataGridView de una tabla de la base de datos
+// Se necesita hacer una consulta y luego pasarle los valores a la tabla
+
+
+
+
+string connection = System.Configuration.ConfigurationManager.ConnectionStrings["ArmandoInfoADM.Properties.Settings.armandoinfo_dbConnectionString"].ConnectionString;
+SqlConnection sqlConexion;
+SqlCommand comando;
+string consulta;
+
+// TABLA QUE VAMOS A LLENAR
+sqlConexion.Open();
+consulta = "SELECT * FROM LugarDeLaDBQueSeVaAConsultar WHERE NombreId = @NombreId";
+comando = new SqlCommand(consulta, sqlConexion);
+comando.Parameters.AddWithValue("@EmployeesId", ID);
+var resultado = comando.ExecuteReader();
+while(resultado.Read())
+{
+    DataGridViewRow row = (DataGridViewRow)dataGridView1.Rows[0].Clone();
+    row.Cells[COLUMNA1.Index].Value = resultado["NOMBRE1"].ToString();
+    row.Cells[COLUMNA2.Index].Value = resultado["NOMBRE2"].ToString();
+    row.Cells[COLUMNA3.Index].Value = resultado["NOMBRE3"].ToString();
+
+    dataGridView1.Rows.Add(row);
+}
+resultado.Close();
