@@ -12,6 +12,9 @@ foreach (DataGridViewRow row in dataGridView1.Rows){
 }
 
 
+// Poner valor a una celda en especifico
+
+dataGridView1.Rows[NUMERO DE FILA].Cells[COLUMNA.Index].Value = 30;
 
 
 

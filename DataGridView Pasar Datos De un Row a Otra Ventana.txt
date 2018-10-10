@@ -1,0 +1,22 @@
+            DataRowView drv = (DataRowView)facturasBindingSource.Current;
+            DataRow dr = drv.Row;
+
+            FacturaCliente factura = new FacturaCliente();
+            factura.Concepto = dr["Concepto"].ToString();
+            factura.Razon = dr["Razon"].ToString();
+            factura.Fecha = (DateTime)dr["Fecha"];
+            factura.Monto = float.Parse(dr["Monto"].ToString());
+            factura.NumeroFactura = dr["NumeroFactura"].ToString();
+            factura.Direccion = dr["Direccion"].ToString();
+            factura.Moneda = dr["Moneda"].ToString();
+            factura.IdCliente = dr["IdCliente"].ToString();
+            factura.Iva = float.Parse(dr["Iva"].ToString());
+
+            EmitirFactura nuevaFacturaCliente = new EmitirFactura(factura);
+            nuevaFacturaCliente.ShowDialog();
+
+            if (nuevaFacturaCliente.DialogResult == DialogResult.OK)
+            {
+                this.facturasTableAdapter.Fill(this.facturasDataSet.Facturas);
+            }
+            nuevaFacturaCliente.Dispose();

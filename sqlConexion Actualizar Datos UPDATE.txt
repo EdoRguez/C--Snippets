@@ -1,6 +1,10 @@
 // Para actualizar datos en la base de datos
 
 
+// EN EL LOAD DE LA FORMA DEBES CARGAR LA CONEXION
+
+sqlConexion = new SqlConnection(connection);
+
 // En la clase agregar la conexion, la direccion de la conexion, el comando y la consulta
 
 string connection = System.Configuration.ConfigurationManager.ConnectionStrings["ArmandoInfoAdm.Properties.Settings.armandoinfo_dbConnectionString"].ConnectionString;
@@ -23,3 +27,8 @@ comando.Parameters.AddWithValue("@Valor2", Valor2EnLaForma);
 
 comando.ExecuteNonQuery();
 sqlConexion.Close();
+
+Cursor.Current = Cursors.Default;
+MessageBox.Show("Los datos han sido actualizados satisfactoriamente", "Actualización completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+this.DialogResult = DialogResult.OK;
+Dispose();

@@ -1,0 +1,7 @@
+// REMOVE LIST ITEM
+
+// REMOVE BY INDEX
+list.RemoveAt(Index);
+
+// REMOVE BY OBJECT ELEMENT
+LIST.RemoveAll(p => p.name == "A");

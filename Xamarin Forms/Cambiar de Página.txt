@@ -1,0 +1,5 @@
+App.Current.MainPage = new NOMBREDEPAGINA(); // PONE ESTO COMO UNICA PAGINA
+
+
+await Navigation.PushAsync(new NOMBREPAGINA()); // Te mueve a la otra pagina pero puedes echar para atras
+// DEBES PONER LA FUNCION ASYNC

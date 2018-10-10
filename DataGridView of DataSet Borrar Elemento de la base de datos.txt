@@ -1,0 +1,20 @@
+            DataRowView drv = (DataRowView)facturasBindingSource.Current;
+            DataRow dr = drv.Row;
+
+            if (MessageBox.Show("Esta seguro de borrar a esta factura?", "Borrar factura", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+
+            {
+                try
+                {
+                    this.facturasBindingSource.RemoveCurrent();
+                    this.Validate();
+                    this.facturasBindingSource.EndEdit();
+                    this.tableAdapterManager.UpdateAll(this.facturasDataSet);
+
+                    MessageBox.Show("Factura borrada con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception error)
+                {
+                    MessageBox.Show(error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }

@@ -1,0 +1,65 @@
+// GUARDAR VALORES
+
+
+
+
+// NOTA
+// ANTES DE EMPEZAR ES MEJOR DECIR QUE ESTO TRAE A VECES PROBLEMAS PARA USARLO
+// PARA EVITAR LOS ERRORES ES MEJOR INICIAR LA PROPIEDAD CON UN VALOR POR DEFECTO
+// EN EL CODIGO DE LA PAGINA APP
+// AQUI DOS EJEMPLOS.
+
+    1. if (!Application.Current.Properties.ContainsKey("Idioma"))
+    {
+        Application.Current.Properties["Idioma"] = "Español";
+    }
+
+    2. Application.Current.Properties["CambioIdioma"] = true;
+
+
+
+
+
+
+
+Application.Current.Properties["UnNombreCualquieraaGuardar"] = Valor en la app;  
+Application.Current.Properties["UnNombreCualquieraaGuardar2"] = Valor en la app 2;
+await Application.Current.SavePropertiesAsync(); // GUARDAR TODOS LOS VALORES
+
+Valor en la app = string.Empty; // OPCIONAL
+Valor en la app 2 = string.Empty; // OPCIONAL
+
+
+
+// LEER VALORES
+
+if (Application.Current.Properties.ContainsKey("ElNombreGUardado")) // OPCIONAL 
+{  
+        LUGAR1 = Application.Current.Properties["ElNombreGUardado1"].ToString();  
+        LUGAR2 = Application.Current.Properties["ElNombreGUardado2"].ToString();  
+        LUGAR3 = Application.Current.Properties["ElNombreGUardado3"].ToString();  
+}
+
+
+
+// ELIMINAR VALORES DE CADA PROPIEDAD
+
+if (Application.Current.Properties.ContainsKey("ID"))  // OPCIONAL
+{  
+        Application.Current.Properties.Remove("ElNombreGUardado1");  
+        Application.Current.Properties.Remove("ElNombreGUardado2");  
+        Application.Current.Properties.Remove("ElNombreGUardado");  
+        ClearAll();    
+} 
+
+
+
+// ELIMINAR TODAS LAS PROPIEDADES
+
+if (Application.Current.Properties.ContainsKey("ElNombreGUardado"))  
+{  
+        Application.Current.Properties.Remove("ElNombreGUardado1");  
+        Application.Current.Properties.Remove("ElNombreGUardado2");  
+        Application.Current.Properties.Remove("ElNombreGUardado3");  
+        ClearAll();   
+} 

@@ -1,0 +1,15 @@
+ SliderMax.Value = DOUBLE VALUE
+
+
+ private void SliderMax_ValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            if(Double.Parse(Application.Current.Properties["NumeroHistorias"].ToString()) != SliderMax.Value)
+            {
+                Application.Current.Properties["CambioIdioma"] = true;
+            }
+            else
+            {
+                Application.Current.Properties["CambioIdioma"] = false;
+            }
+            Application.Current.Properties["NumeroHistorias"] = SliderMax.Value;
+        }

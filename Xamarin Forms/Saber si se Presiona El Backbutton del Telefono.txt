@@ -1,0 +1,12 @@
+        protected override bool OnBackButtonPressed()
+        {
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                var result = await this.DisplayAlert("HEY", "Dont leave!", "SI", "NO");
+                if (result)
+                    await this.Navigation.PopAsync();
+            });
+
+            return true;
+        }

@@ -1,0 +1,20 @@
+// Button en el codigo 
+
+var buttonResumen = new Button
+{
+       Text = "Página del Resumen",
+       TextColor = Color.White,
+       BackgroundColor = Color.FromHex("#b71c1c"),
+       FontAttributes = FontAttributes.Bold,
+
+       HorizontalOptions = LayoutOptions.Center,
+       VerticalOptions = LayoutOptions.Center             
+};
+
+buttonResumen.Clicked += ResumenButton;
+
+
+private void ResumenButton(object sender, EventArgs e)
+{
+       DisplayAlert("TItulo", "AJAJA", "OK");
+}

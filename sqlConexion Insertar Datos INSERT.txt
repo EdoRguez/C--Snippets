@@ -1,6 +1,10 @@
 // Para guardar datos en la base de datos
 
 
+// EN EL LOAD DE LA FORMA DEBES CARGAR LA CONEXION
+
+sqlConexion = new SqlConnection(connection);
+
 // En la clase agregar la conexion, la direccion de la conexion, el comando y la consulta
 
 string connection = System.Configuration.ConfigurationManager.ConnectionStrings["ArmandoInfoAdm.Properties.Settings.armandoinfo_dbConnectionString"].ConnectionString;

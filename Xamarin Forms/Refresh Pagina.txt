@@ -1,0 +1,3 @@
+var vUpdatedPage = new PAGINAQUEVASAREFRESCAR();
+Navigation.InsertPageBefore(vUpdatedPage, this);
+Navigation.PopAsync();
