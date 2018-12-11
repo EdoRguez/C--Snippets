@@ -1,0 +1,9 @@
+// Node y Link son los atributos NO LOS DATOS
+
+node.on('click', e => {
+    console.log(e);
+});
+
+link.on('click', e => {
+    console.log(e);
+})
