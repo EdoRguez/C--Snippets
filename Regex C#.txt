@@ -1,16 +1,17 @@
 Regex phoneNumPattern = new Regex(@"\+[0-9]{1,3}\s+[0-9]{3}\s+[0-9]{7}"); // +58 212 4569874
-
 Regex phoneNumberPattern2 = new Regex(@"\+[0-9]{1,3}[-]+[0-9]{3}[-]+[0-9]{7}"); // Igual que el de arriba pero con - entre los numeros
+Regex phoneNumberPattern = new Regex(@"[0-9]{4}[-]+[0-9]{7}"); // 0212-1234567
 
 Regex emailPattern = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*" + "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$"); // ejemplo@gmail.com
 
-Regex numeroDeCuentaPattern = new Regex(@"[0-9]{20}"); // N. Cuenta bancaria (20 dÌgitos)
+Regex numeroDeCuentaPattern = new Regex(@"[0-9]{20}"); // N. Cuenta bancaria (20 d√≠gitos)
 
-Regex yearPattern = new Regex(@"^(19|20)[0-9][0-9]"); // AÒos entre 1900 y 2099
+Regex yearPattern = new Regex(@"^(19|20)[0-9][0-9]"); // A√±os entre 1900 y 2099
 
 Regex numberPattern = new Regex(@"^([0-9]|[1-9][0-9]|100)$"); // Numero entre 1 y 100
 Regex numberPattern = new Regex(@"^(100|\d)(\.\d{1,2})?$"); // Numero entre 0 y 100 con decimales
 
+Regex passwordPattern = new Regex(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,15}$"); // Ejemplo: coNtrase√±a_1 (1 mayus, 1mini, 1 special, 1 numb, between 6 y 15)
 
 if (!NOMBREDELREGEX.IsMatch(VALORACONFIRMAR))
 
