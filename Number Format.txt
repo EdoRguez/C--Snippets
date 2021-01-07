@@ -2,11 +2,14 @@
 
 var nfi = new NumberFormatInfo { NumberDecimalSeparator = ",", NumberGroupSeparator = "." };
 
-.ToString("#,##0.00", nfi); // Añadir al final de un texto
-
-
+.ToString("#,##0.00", nfi); // AÃ±adir al final de un texto
 
 
 // Otra manera de hacer el formato de los numeros
 
 String.Format("{0:#,##0.00}", dataGridView1[COLUMNA.Index, i].Value)
+
+
+// Formatear numero Ej: 25.000.000,00
+
+numero.ToString("N",new CultureInfo("is-IS"))
